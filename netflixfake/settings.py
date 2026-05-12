@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 
+#diretorio base que é a pasta onde o projeto esta no caso ProjetoNetFlixFake
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,17 +20,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
+#chave de segurança do projeto
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-(8pzipi^hpc0&ir&oa$l(lpv4@@9_shun-q5ep3bim2s@(nge#'
 
+#permite que as mudanças reflitam no projeto rodando
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
+#apps instalados nesse caso todos que começa com django e padrão os
+#os outros são os APPs criados filme...
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +46,7 @@ INSTALLED_APPS = [
     'filme',
 ]
 
+#processos do django de meio do caminho
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,8 +57,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+#qual é o arquivo que esta a base de liks que comanda o site
 ROOT_URLCONF = 'netflixfake.urls'
 
+
+#onde fica os arquivos HTML templates
+#e opções de contexto
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -67,9 +79,11 @@ TEMPLATES = [
     },
 ]
 
+
+#onde esta o arquivo de configuração do servidor
 WSGI_APPLICATION = 'netflixfake.wsgi.application'
 
-
+#qual é banco de dados
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
@@ -80,7 +94,7 @@ DATABASES = {
     }
 }
 
-
+#validadores de senha que o django vai gerencias
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -102,17 +116,22 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+#lingua do admnistrativo
+#padrão LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
+#qual é o fusohorario
+#padrao TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
+#
 USE_I18N = True
 
 USE_TZ = True
 
-
+#onde fica os arquivos Static
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+#define as chaves primarias no bancos de dados
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
