@@ -1,3 +1,8 @@
+startar um projeto no  django
+django-admin startproject netflixfake .
+cria um app no projeto
+django-admin startapp filme
+
 como criar um super usuario django
 no terminal digitar python .\manage.py createsuperuser
 
