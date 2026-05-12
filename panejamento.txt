@@ -1,3 +1,6 @@
+como criar um super usuario django
+no terminal digitar python .\manage.py createsuperuser
+
 homepage
 fazer login e criar conta (usuario e autenticação)
 uduario
