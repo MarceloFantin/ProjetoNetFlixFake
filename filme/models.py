@@ -19,6 +19,9 @@ class Filme(models.Model):
     visualizacoes = models.IntegerField(default=0)
     data_criação = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.titulo
+
 
 
 
