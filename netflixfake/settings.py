@@ -133,5 +133,17 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#variavel que diz onde esta a pasta STATIC
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+#configuração da pasta para usuario fazer upload
+#nome da URL da imagem
+MEDIA_URL = 'media/'
+#variavel que diz onde esta a pasta MEDIA
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 #define as chaves primarias no bancos de dados
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
