@@ -21,7 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('/', include('filme.urls')),
+    #aqui esta carregando as urls que tem no url.py dentro da pasta filme/urls.py
+    #la será controlado todas as paginas do projeto
+    path('', include('filme.urls')),
 ]
 
 #linha para criar uma link para as imagens
