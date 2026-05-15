@@ -64,10 +64,17 @@ ROOT_URLCONF = 'netflixfake.urls'
 
 #onde fica os arquivos HTML templates
 #e opções de contexto
+#'DIRS': ['templates'], pega o templates que esta dentro do projeto nesse caso
+#esses templates serve para o geral do site coisas padrão que vai influenciar em todas as paginas
+#seria os templates mãe
+
+#'APP_DIRS': True, aqui diz para o django procurar dentro do APP uma pasta templates que é especifico do app
+#nesse caso tem o APP "filme" la dentro tem uma pasta templates que é espeficico desse APP
+#nesse app os templates carrega coisas do template principal e pode ser alterado algumas coisas
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
