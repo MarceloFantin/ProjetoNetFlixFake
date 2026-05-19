@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="py-10"
+    <div class="py-10">
         <p>Essa home page de filmes</p>
-        {% for filme in lista_filmes %}
+        {% for filme in object_list %}
             <hr>
             <p>{{ filme.titulo }}</p>
             <p>{{ filme.descricao }}</p>
