@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+    NetFlix Fake - Home Filmes
+{% endblock %}
+
+{% block content %}
+    <div class="py-10"
+        <p>Essa home page de filmes</p>
+        {% for filme in lista_filmes %}
+            <hr>
+            <p>{{ filme.titulo }}</p>
+            <p>{{ filme.descricao }}</p>
+            <img src="{{filme.thumb.url}}">
+        {% endfor %}
+    </div>
+{% endblock %}
