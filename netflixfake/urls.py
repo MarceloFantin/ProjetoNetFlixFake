@@ -23,7 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #aqui esta carregando as urls que tem no url.py dentro da pasta filme/urls.py
     #la será controlado todas as paginas do projeto
-    path('', include('filme.urls')),
+    #o paramentro namespace tem que colocar o nome do app definido dentro do url.py do APP
+    #o caso da linha abaixo filme/url.py tem a linha de codigo app_name = 'filme'
+    path('', include('filme.urls', namespace='filme')),
 ]
 
 #linha para criar uma link para as imagens
