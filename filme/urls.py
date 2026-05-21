@@ -4,10 +4,11 @@
 #template - é a parte visual HTML
 
 from django.urls import path, include
-from .views import Homepage, Homefilmes
+from .views import Homepage, Homefilmes, Detalhesfilme
 
 urlpatterns = [
     #liks das URLs
     path('', Homepage.as_view()),
     path('filmes/', Homefilmes.as_view()),
+    path('filmes/<int:pk>', Detalhesfilme.as_view()),
 ]

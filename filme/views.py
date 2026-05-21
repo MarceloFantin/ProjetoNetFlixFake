@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from .models import Filme
 
@@ -29,6 +29,9 @@ class Homefilmes(ListView):
     template_name = 'homefilmes.html'
     model = Filme
 
+class Detalhesfilme(DetailView):
+    template_name = 'detalhesfilme.html'
+    model = Filme
 
 
 
