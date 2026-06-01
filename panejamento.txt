@@ -30,5 +30,6 @@ filmes/series
  - epdisodios
     - videos
     - titulo
+    - link do video
 
 barra de pesquisa
