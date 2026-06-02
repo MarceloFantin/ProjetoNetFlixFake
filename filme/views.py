@@ -33,6 +33,16 @@ class Detalhesfilme(DetailView):
     template_name = 'detalhesfilme.html'
     model = Filme
 
+    #aqui no Detalhesfilme teremos que ter outra view
+    #então tem que ter a função abaixo, pois nas DetailView por padrão sempre tem somente uma View
+    def get_context_data(self, **kwargs):
+        #essa linha garante que a contexto original a view original não seja apagada
+        context = super(Detalhesfilme, self).get_context_data(**kwargs)
+        #filtrar os filmes cujo a categoria é igual a categoria do filme do detalhe
+        filmes_relacionados = Filme.objects.filter(categoria = self.get_object().categoria)[0:5]
+        context['filmes_relacionados'] = filmes_relacionados
+        print(context)
+        return context
 
 
 

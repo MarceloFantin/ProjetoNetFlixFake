@@ -18,4 +18,12 @@
             </a>
         {% endfor %}
     </div>
+    <div class="py-10">
+        <h2>Filmes Relacionados</h2>
+        {% for filme in filmes_relacionados %}
+                <a href="{% url 'filme:detalhesfilme' filme.id %}">
+                    <p> {{ filme.titulo }} </p>
+                </a>
+        {% endfor %}
+    </div>
 {% endblock %}
