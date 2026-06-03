@@ -32,6 +32,17 @@ class Detalhesfilme(DetailView):
     template_name = 'detalhesfilme.html'
     model = Filme
 
+    #vamos fazer um contagem de visuzalizações
+    #nesse caso será contabilizado quando entrar no detalhes do filme
+    def get(self, request, *args, **kwargs):
+        #descobrir qual filme esta sendo acessado
+        filme = self.get_object()
+        filme.visualizacoes += 1
+        filme.save()
+        # print('passou aqui')
+        return super().get(request, *args, **kwargs) #redireciona o usuario para a URL final
+
+
     #aqui no Detalhesfilme teremos que ter outra view
     #então tem que ter a função abaixo, pois nas DetailView por padrão sempre tem somente uma View
     def get_context_data(self, **kwargs):
@@ -40,7 +51,7 @@ class Detalhesfilme(DetailView):
         #filtrar os filmes cujo a categoria é igual a categoria do filme do detalhe
         filmes_relacionados = Filme.objects.filter(categoria = self.get_object().categoria)[0:5]
         context['filmes_relacionados'] = filmes_relacionados
-        #print(context)
+        #print("passou aqui 2")
         return context
 
 
