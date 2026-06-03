@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic import TemplateView, ListView, DetailView
-
 from .models import Filme
 
 
@@ -41,7 +40,7 @@ class Detalhesfilme(DetailView):
         #filtrar os filmes cujo a categoria é igual a categoria do filme do detalhe
         filmes_relacionados = Filme.objects.filter(categoria = self.get_object().categoria)[0:5]
         context['filmes_relacionados'] = filmes_relacionados
-        print(context)
+        #print(context)
         return context
 
 
