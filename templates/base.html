@@ -21,9 +21,8 @@
     <script>
         const nav = document.querySelector('nav')
 
-        const nav = document.querySelector('nav')
+        document.addEventListener('scroll',e=>{
 
-        document.addEventListener("scroll",e=>{
             if(scrollY>100){
                 if(scrollY>window.innerHeight){
                 nav.classList.add('invisible')
