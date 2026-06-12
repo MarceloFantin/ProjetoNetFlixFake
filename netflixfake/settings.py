@@ -107,6 +107,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
+#continuação do classe usuario que será quem vai gerenciar os usuarios
+#passando essa variavel abaixo e dizendo onde esta a classe que vai gerenciar 'app.classe' no caso 'filme.Usuario'
+AUTH_USER_MODEL = 'filme.Usuario'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

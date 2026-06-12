@@ -7,11 +7,10 @@ from .models import Filme
 def lista_filmes_recentes(request):
     lista_filmes = Filme.objects.all().order_by('-data_criacao')[0:8]
     #esse filme destaque pode ser com outros tipos de filtro
-    filme_destaque = lista_filmes[0]
-    print(filme_destaque.titulo)
-    print(filme_destaque.descricao)
-    print(filme_destaque.thumb.url)
-    print(filme_destaque.pk)
+    if lista_filmes:
+        filme_destaque = lista_filmes[0]
+    else:
+        filme_destaque = None
     return {"lista_filmes_recentes": lista_filmes, "filme_destaque": filme_destaque}
 
 def lista_filmes_emalta(request):
