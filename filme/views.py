@@ -1,3 +1,4 @@
+from django.contrib.auth import user_logged_in
 from django.shortcuts import render
 from django.template.context_processors import request
 from django.views import generic
@@ -28,6 +29,7 @@ class Homepage(TemplateView):
 class Homefilmes(ListView):
     template_name = 'homefilmes.html'
     model = Filme
+
 
 class Detalhesfilme(DetailView):
     template_name = 'detalhesfilme.html'
