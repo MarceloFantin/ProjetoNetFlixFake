@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template.context_processors import request
 from django.views import generic
 from django.views.generic import TemplateView, ListView, DetailView
-from .models import Filme
+from .models import Filme, Usuario
 
 
 # Create your views here.
@@ -42,6 +42,9 @@ class Detalhesfilme(DetailView):
         filme = self.get_object()
         filme.visualizacoes += 1
         filme.save()
+        usuario = request.user
+        usuario.filmes_vistos.add(filme)
+        usuario.save()
         # print('passou aqui')
         return super().get(request, *args, **kwargs) #redireciona o usuario para a URL final
 
