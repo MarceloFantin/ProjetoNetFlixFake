@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import Filme, Usuario
 #essa biblioteca serve para passar para as classbaseviews para bloquear a classbaseview se o usuario não estiver
@@ -25,6 +25,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Homepage(TemplateView):
     template_name = 'homepage.html'
+
+    def get(self, request, *args, **kwargs ):
+        if request.user.is_authenticated:
+            #aqui tem que usar o redirect não da para usar o render
+            #no redirect tem que tem os paramentos nome do app:nome da pagina no caso filme:homefilme
+            #lembrado que o nome do app não é o nome da pasta e sim o que esta configurado em urls.py app_name = 'filme'
+            #e no urls.py também tem o nome da pagina
+            return redirect('filme:homefilmes')
+
+        else:
+            return super().get(request, *args, **kwargs)  # redireciona o usuario para a URL final
 
 
 # o LoginRequiredMixin sempre tem que estar no primero lugar dos paremetros
