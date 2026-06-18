@@ -1,9 +1,9 @@
-from django.contrib.auth import user_logged_in
 from django.shortcuts import render
-from django.template.context_processors import request
-from django.views import generic
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import Filme, Usuario
+#essa biblioteca serve para passar para as classbaseviews para bloquear a classbaseview se o usuario não estiver
+#logado
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -26,12 +26,17 @@ from .models import Filme, Usuario
 class Homepage(TemplateView):
     template_name = 'homepage.html'
 
-class Homefilmes(ListView):
+
+# o LoginRequiredMixin sempre tem que estar no primero lugar dos paremetros
+# para bloquear o acesso da pagina se não tiver logado
+# e tem que alterar o settings.py para dizer para onde será redirecionado quando não conseguir entrar
+# acrecentar as variaveis LOGIN_REDIRECT_URL e LOGIN_URL = '/login/'
+class Homefilmes(LoginRequiredMixin, ListView):
     template_name = 'homefilmes.html'
     model = Filme
 
 
-class Detalhesfilme(DetailView):
+class Detalhesfilme(LoginRequiredMixin, DetailView):
     template_name = 'detalhesfilme.html'
     model = Filme
 
@@ -61,7 +66,7 @@ class Detalhesfilme(DetailView):
         return context
 
 
-class PesquisaFilme(ListView):
+class PesquisaFilme(LoginRequiredMixin, ListView):
     template_name = 'pesquisa.html'
     model = Filme
 

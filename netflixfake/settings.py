@@ -159,3 +159,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 #define as chaves primarias no bancos de dados
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#pagina para onde será redirecionado quando fazer o login preencher com o nome do app:pagina no caso filme.homefilmes
+LOGIN_REDIRECT_URL = 'filme:homefilmes'
+#pagina onde sera feito o login preencher com o nome do app:pagina no caso filme.login
+LOGIN_URL = 'filme:login'
+
