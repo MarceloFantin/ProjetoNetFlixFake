@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, UpdateView
 from .models import Filme, Usuario
 #essa biblioteca serve para passar para as classbaseviews para bloquear a classbaseview se o usuario não estiver
 #logado
@@ -89,6 +89,9 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
         else:
             return None
 
+
+class PaginalPerfil(LoginRequiredMixin, TemplateView):
+    template_name = 'editarperfil.html'
 
 
 

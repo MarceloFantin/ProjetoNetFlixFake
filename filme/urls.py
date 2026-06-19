@@ -4,7 +4,7 @@
 #template - é a parte visual HTML
 
 from django.urls import path, include
-from .views import Homepage, Homefilmes, Detalhesfilme, PesquisaFilme
+from .views import Homepage, Homefilmes, Detalhesfilme, PesquisaFilme, PaginalPerfil
 #biblioteca do django que ja tem view prontas
 from django.contrib.auth import views as auth_views
 
@@ -18,4 +18,5 @@ urlpatterns = [
     path('pesquisa/', PesquisaFilme.as_view(), name="pesquisafilme"),
     path('login/', auth_views.LoginView.as_view(template_name="login.html"), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name="logout.html"), name='logout'),
+    path('editarperfil/', PaginalPerfil.as_view(), name="editarperfil"),
 ]
