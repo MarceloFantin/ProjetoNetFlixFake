@@ -90,9 +90,11 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
             return None
 
 
-class PaginalPerfil(LoginRequiredMixin, TemplateView):
+class PaginalPerfil(TemplateView):
     template_name = 'editarperfil.html'
 
+class CriarConta(TemplateView):
+    template_name = 'criarconta.html'
 
 
 

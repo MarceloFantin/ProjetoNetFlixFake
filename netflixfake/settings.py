@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'filme',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 #processos do django de meio do caminho
@@ -165,3 +167,12 @@ LOGIN_REDIRECT_URL = 'filme:homefilmes'
 #pagina onde sera feito o login preencher com o nome do app:pagina no caso filme.login
 LOGIN_URL = 'filme:login'
 
+#CONFIGURAÇÕES NECESSARIO PARA USUAIO O GRISPY FORMS
+#alem de adicionar no apps as linhas
+# 'crispy_forms'
+# 'crispy_bootstrap5',
+# instalar pip install pip install django-crispy-forms e crispy-bootstrap5
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
