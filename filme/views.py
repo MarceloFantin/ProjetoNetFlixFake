@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView, DetailView, UpdateView
+from django.shortcuts import render, redirect, reverse
 from .models import Filme, Usuario
+from .forms import CriarContaForm
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 #essa biblioteca serve para passar para as classbaseviews para bloquear a classbaseview se o usuario não estiver
 #logado
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -93,8 +94,26 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
 class PaginalPerfil(TemplateView):
     template_name = 'editarperfil.html'
 
-class CriarConta(TemplateView):
+class CriarConta(FormView):
     template_name = 'criarconta.html'
+    form_class = CriarContaForm
+
+    #essa função por padrão verifica se todos os campos foram preenchidos corretamente
+    #mas nesse caso alem disso vai ser salvo o formulario
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    #essa função diz o que vai acontecer quando o formulário der certo
+    #sempre que for criado um FormView tem que dizer para onde ir quando a função der certo
+    #e é a get_success_url que faz isso
+    def get_success_url(self):
+        #essa função espera como resposta um url por isso não pode ser usado o redirect
+        #tipo return redirect('filme:homefilmes') isso não vai dar erro
+        #o correto é aqui é usar reverse
+        #o reverse da como resposta o link correspondente
+        return reverse('filme:homefilmes')
+
 
 
 
