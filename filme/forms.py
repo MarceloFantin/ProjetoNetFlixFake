@@ -12,6 +12,8 @@ class CriarContaForm(UserCreationForm):
         model = Usuario
         fields = ['username', 'email', 'password1', 'password2']
 
+class HomePageForm(forms.Form):
+    email = forms.EmailField(label=False)
 
 
 

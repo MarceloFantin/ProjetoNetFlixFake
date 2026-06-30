@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Filme, Usuario
-from .forms import CriarContaForm
+from .forms import CriarContaForm, HomePageForm
 from django.views.generic import TemplateView, ListView, DetailView, FormView
 #essa biblioteca serve para passar para as classbaseviews para bloquear a classbaseview se o usuario não estiver
 #logado
@@ -24,8 +24,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #views orientadas a objeto
 #nesse projeto sera usado CBV
 
-class Homepage(TemplateView):
+class Homepage(FormView):
     template_name = 'homepage.html'
+    form_class = HomePageForm
+
+    def get_success_url(self):
+        email = self.request.POST.get('email')
+        if Usuario.objects.filter(email=email).exists():
+            return reverse('filme:login')
+        else:
+            return reverse('filme:criarconta')
 
     def get(self, request, *args, **kwargs ):
         if request.user.is_authenticated:
