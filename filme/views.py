@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Filme, Usuario
 from .forms import CriarContaForm, HomePageForm
-from django.views.generic import TemplateView, ListView, DetailView, FormView
+from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 #essa biblioteca serve para passar para as classbaseviews para bloquear a classbaseview se o usuario não estiver
 #logado
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -99,8 +99,16 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
             return None
 
 
-class PaginalPerfil(TemplateView):
+class PaginalPerfil(LoginRequiredMixin, UpdateView):
     template_name = 'editarperfil.html'
+    model = Usuario
+    fields = ['first_name', 'last_name', 'email' ]
+
+    def get_success_url(self):
+        return reverse('filme:homefilmes')
+
+
+
 
 class CriarConta(FormView):
     template_name = 'criarconta.html'

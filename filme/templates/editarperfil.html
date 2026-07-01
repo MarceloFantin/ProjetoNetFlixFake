@@ -1,10 +1,80 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 
 {% block titulo %}
     NetFlix Fake - Editar Perfil
 {% endblock %}
 
 {% block content %}
-pagina de Editar Perfil do usuario
+    <header class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static 'images/background_netflix.jpg' %}');">
+        <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col w-full max-w-md px-4">
+            <h2 class="text-2xl mb-2">{{ user.username }}</h2>
+
+            <form method="post" class="w-full text-left">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4 text-center">Edite os campos abaixo para editar seu perfil</legend>
+                    <div class="relative" id="django-form-container">
+                        {{ form|crispy }}
+                    </div>
+                </fieldset>
+                <button class="bg-red-600 py-2 px-3 text-white md:text-lg !rounded-md w-full mt-4" type="submit">Salvar</button>
+            </form>
+
+            <small class="mt-4"><a href=\"{% url 'filme:mudarsenha' %}\" class="hover:underline text-gray-400">Quer mudar sua senha?</a></small>
+        </div>
+    </header>
+
+    <footer class=" px-5 py-10 ">
+        <ul class="flex justify-between items-center text-gray-500">
+            <li>&copy; 2021</li>
+            <li> Feito com Python (Django)</li>
+            <li>Hashtag</li>
+        </ul>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Seleciona todos os inputs de senha gerados pelo Django dentro do formulário
+            const passwordInputs = document.querySelectorAll('input[type="password"]');
+
+            passwordInputs.forEach(input => {
+                // Cria um container relativo para o input e o botão se o pai já não for
+                const wrapper = document.createElement('div');
+                wrapper.classList.add('relative', 'w-full');
+                input.parentNode.insertBefore(wrapper, input);
+                wrapper.appendChild(input);
+
+                // Cria o botão de alternar visualização
+                const toggleBtn = document.createElement('button');
+                toggleBtn.type = 'button';
+                toggleBtn.innerText = '👁️';
+                toggleBtn.style.position = 'absolute';
+                toggleBtn.style.right = '10px';
+                toggleBtn.style.top = '50%';
+                toggleBtn.style.transform = 'translateY(-50%)';
+                toggleBtn.style.background = 'none';
+                toggleBtn.style.border = 'none';
+                toggleBtn.style.cursor = 'pointer';
+                toggleBtn.style.fontSize = '18px';
+                toggleBtn.style.zIndex = '10';
+
+                // Adiciona o botão logo após o input
+                wrapper.appendChild(toggleBtn);
+
+                // Evento de clique para alternar text / password
+                toggleBtn.addEventListener('click', function() {
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        toggleBtn.innerText = '🙈'; // Muda o ícone quando está visível
+                    } else {
+                        input.type = 'password';
+                        toggleBtn.innerText = '👁️';
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}
