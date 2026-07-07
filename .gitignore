@@ -218,5 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-media/thumb_filmes/EXCEL_IMPRESSIONADOR_1280X725.png
-media/thumb_filmes/PYTHON_IMPRESSIONADOR_1280X725.png
+media/thumb_filmes/*.png
+
+
