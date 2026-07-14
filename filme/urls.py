@@ -30,5 +30,5 @@ urlpatterns = [
 
     #url para criar o usuario quado o projeto estiver no ar porque o reder usado é free
     #comentar depois de criar o usuario para não ficar em produção
-    path('criar-admin-temp/', criar_admin_temp, name='criar_admin_temp')
+    path('criar-admin-temp/', criar_admin_temp, name='criar_admin_temp'),
 ]
