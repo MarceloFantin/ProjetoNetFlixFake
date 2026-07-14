@@ -26,7 +26,7 @@ urlpatterns = [
     #no PasswordChangeView também precisa de uma success_url que á passado nos parametros
     #no paremetro tem que user o reverse_lazy diferente na função que usa so o reverse
     path('mudarsenha/' , auth_views.PasswordChangeView.as_view(template_name="editarperfil.html",
-                                                                    success_url=reverse_lazy('filme:homefilmes')), name="mudarsenha")
+                                                                    success_url=reverse_lazy('filme:homefilmes')), name="mudarsenha"),
 
     #url para criar o usuario quado o projeto estiver no ar porque o reder usado é free
     #comentar depois de criar o usuario para não ficar em produção
