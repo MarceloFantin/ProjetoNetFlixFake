@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 #quando for criar as views pode se usar a function base view(FBV) que seria
 
-#def homepage(request):
+# def homepage(request):
 #    return render(request, 'homepage.html')
 #
 # def homefilmes(request):
@@ -134,20 +134,21 @@ class CriarConta(FormView):
 
 #view para criar um usuario no projeto para porque foi usado o render free
 #comentar tiudo depois para não ficar em produção
-    from django.contrib.auth import get_user_model
-    from django.http import HttpResponse
 
-    def criar_admin_temp(request):
-        User = get_user_model()
-        if User.objects.filter(username='admin').exists():
-            return HttpResponse('Usuário admin já existe!')
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 
-        User.objects.create_superuser(
-            username='marcelo_fantin@yahoo.com.br',
-            email='marcelo_fantin@yahoo.com.br',
-            password='12345678*'
-        )
-        return HttpResponse('Superuser "admin" criado com sucesso! Já pode acessar o /admin')
+def criar_admin_temp(request):
+    User = get_user_model()
+    if User.objects.filter(username='admin').exists():
+        return HttpResponse('Usuário admin já existe!')
+
+    User.objects.create_superuser(
+        username='marcelo_fantin@yahoo.com.br',
+        email='marcelo_fantin@yahoo.com.br',
+        password='12345678*'
+    )
+    return HttpResponse('Superuser "admin" criado com sucesso! Já pode acessar o /admin')
 
 
 

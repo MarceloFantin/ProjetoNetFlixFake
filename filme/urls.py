@@ -4,7 +4,7 @@
 #template - é a parte visual HTML
 from django.contrib.messages.api import success
 from django.urls import path, reverse_lazy
-from .views import Homepage, Homefilmes, Detalhesfilme, PesquisaFilme, PaginalPerfil, CriarConta
+from .views import Homepage, Homefilmes, Detalhesfilme, PesquisaFilme, PaginalPerfil, CriarConta, criar_admin_temp
 #biblioteca do django que ja tem view prontas
 from django.contrib.auth import views as auth_views
 
