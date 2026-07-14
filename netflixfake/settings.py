@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 #diretorio base que é a pasta onde o projeto esta no caso ProjetoNetFlixFake
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +30,7 @@ SECRET_KEY = 'django-insecure-(8pzipi^hpc0&ir&oa$l(lpv4@@9_shun-q5ep3bim2s@(nge#
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -49,14 +50,19 @@ INSTALLED_APPS = [
 ]
 
 #processos do django de meio do caminho
+#add essa linha por causa do whitenoise 'whitenoise.middleware.WhiteNoiseMiddleware',
+#tem que ficar depos do SecurityMiddleware do django
+#ver as variaveis estaticas
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 
@@ -98,12 +104,22 @@ WSGI_APPLICATION = 'netflixfake.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
+#banco de dados local para rodar na maquina
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#banco de dados no servidor
+import dj_database_url
+DATABASES_URL = os.getenv('DATABASE_URL')
+if DATABASES_URL:
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASES_URL, conn_max_age=1800)
+    }
 
 #validadores de senha que o django vai gerencias
 # Password validation
@@ -146,6 +162,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+#variavel por causa do whitenoise
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 #variavel que diz onde esta a pasta STATIC
 STATICFILES_DIRS = [

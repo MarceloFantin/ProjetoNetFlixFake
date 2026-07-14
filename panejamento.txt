@@ -10,6 +10,24 @@ no terminal digitar python .\manage.py createsuperuser
 #view - é o que vai acontecer(exmplo: vai pegar algo no banco de dado, fazer algum calculo...)
 #template - é a parte visual HTML
 
+##### deploy do projeto
+quando for dar um deploy no projeto tem que rodar pip freeze > requirements.txt para gerar um arquivo
+com todas a bibliotecas instaladas e repetir todas as vezes que uma nova biblioteca for instalada
+para o projeto e subir o arquivo do github
+
+precisa saber qual é a versão do python ver no terminal no terminal so digital python no terminal nesse dia
+foi a versão 3.13.13
+criar um arquivo com o nume runtime.txt e digitar la dentro python-<VERSAO>
+
+criar um arquivo com o nome Procfile sem extensão
+e digitar la dentro web: python manage.py migrate && gunicorn <pasta onde esta o aquivo wsgi.py>.wsgi --log-file -
+no caso netflixfake.wsgi
+
+tem que criar um banco de dados no servidor para isso tem que alterar o settings.py nas configuraçõe do banco
+dados.
+E tem que instalar o dj-database-url essa biblioteca permite que django se conecte a uma base dados URL
+como será usado uma banco de dados postgres tem que sintalar também psycopg2
+
 o que tera no site
 homepage
 fazer login e criar conta (usuario e autenticação)
