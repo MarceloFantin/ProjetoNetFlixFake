@@ -29,20 +29,18 @@ if TOKEN_CSRF:
     SECRET_KEY = TOKEN_CSRF
     CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
     print('TOKEN ENVIRONMENT')
-else:
-    SECRET_KEY = 'django-insecure-(8pzipi^hpc0&ir&oa$l(lpv4@@9_shun-q5ep3bim2s@(nge#'
-
-#permite que as mudanças reflitam no projeto rodando
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
-if DEBUG:
     DEBUG = False
     print('DEBUG ENVIRONMENT')
 else:
+    SECRET_KEY = 'django-insecure-(8pzipi^hpc0&ir&oa$l(lpv4@@9_shun-q5ep3bim2s@(nge#'
     DEBUG = True
 
+#permite que as mudanças reflitam no projeto rodando
+# SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = True
 
-ALLOWED_HOSTS = ['*.onrender.com', 'localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 #apps instalados nesse caso todos que começa com django e padrão os
