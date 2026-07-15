@@ -42,7 +42,7 @@ else:
     DEBUG = True
 
 
-ALLOWED_HOSTS = ['https://*.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 #apps instalados nesse caso todos que começa com django e padrão os
