@@ -193,7 +193,7 @@ a.arrow__btn {
             <h2 class="text-gray-200 text-2xl font-medium">
                 Continuar Assistindo
             </h2>
-            {% if request.user.filmes_vistos %}
+            {% if request.user.filmes_vistos.all  %}
             <div class="wrapper" style="display:grid; grid-template-columns: repeat(2, 100%); overflow:hidden; width:100%;">
                 <section id="section1filmesvistos" class="flex flex-nowrap items-center justify-center space-x-8" style="width:100%;">
                     <a href="#section2filmesvistos" class="arrow__btn text-6xl page">‹</a>
