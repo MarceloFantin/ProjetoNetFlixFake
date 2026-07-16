@@ -93,14 +93,16 @@ a.arrow__btn {
                 {{ filme_destaque.descricao }}
             </p>
             <div class="flex my-4">
-                <a href="{% url 'filme:detalhesfilme' filme_destaque.pk %}">
-                    <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
-                        <ion-icon name="play" class="text-2xl"></ion-icon>
-                        <span class="ml-3 font-medium " >
-                            Play
-                        </span>
-                    </button>
-                </a>
+                {% if filme_destaque %}
+                    <a href="{% url 'filme:detalhesfilme' filme_destaque.pk %}">
+                        <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
+                            <ion-icon name="play" class="text-2xl"></ion-icon>
+                            <span class="ml-3 font-medium " >
+                                Play
+                            </span>
+                        </button>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </section>

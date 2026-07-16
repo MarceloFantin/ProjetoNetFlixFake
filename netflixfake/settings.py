@@ -37,7 +37,7 @@ else:
 
 #permite que as mudanças reflitam no projeto rodando
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
